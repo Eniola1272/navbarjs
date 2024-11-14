@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        
+        :root {
+            --var-color: red;
+            --white: #fff;
+            --color-dark-grey-1: #111;
+            --color-dark-grey-2: #333;
+
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #888;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            height: 10vh;
+            width: 100%;
+            background-color: var(--white);
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            background-color: var(--white);
+            height: 100px;
+            width: 100px;
+        }
+
+        .line {
+            /* This will bring them to the same position so that rotation will be about the same axis */
+            position: relative;
+        }
+        
+        .line,
+        .line::after,
+        .line::before {
+            height: 3px;
+            width: 30px;
+            background-color: var(--color-dark-grey-1);
+            display: inline-block;
+            /* margin-bottom: 5px; */
+        }
+        
+        .line::after,
+        .line::before {
+            content: "";
+            position: absolute;
+        }
+
+        .line::before {
+            margin-top: 8px;
+        }
+        
+        .line::after {
+            margin-top: -8px;
+        }
+        
+        .line:last-child {
+            margin-bottom: 0;
+        }
+
+        .nav-btn {
+            padding: 3px;
+        }
+        .nav-btn:hover {
+            backface-visibility: hidden;
+        }
+
+        /************* HOVER ***************/
+        
+        .nav-btn:hover > .line__1{
+            transform: rotate(-135deg) ;
+            transition: all .4s ease;
+            margin: 0;
+        }
+        
+        .nav-btn:hover > .line::before{
+            visibility: hidden;
+        }
+        
+        .nav-btn:hover > .line::after{
+            transition: all .4s ease;
+            transform: rotate(270deg) ;
+        }
+
+        .nav-btn:hover .line::before {
+            margin-top: 0;
+        }
+        
+        .nav-btn:hover .line::after {
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="nav-btn">
+            <div class="line line__1"></div>
+            
+        </div>
+    </header>
+</body>
+</html>
